@@ -15,6 +15,6 @@ export class MaterialController {
 
   @Patch(':id/status')
   async updateStatus(@Param('id') id: string, @Body() body: { purchaseStatus: PurchaseStatus }, @Req() req: Request) {
-    return ok(await this.service.updateStatus(id, body.purchaseStatus, req.user?.id ?? 'demo-manager'));
+    return ok(await this.service.updateStatus(id, body.purchaseStatus, req.user?.id ?? 'demo-manager', req.user?.name ?? '演示项目经理'));
   }
 }

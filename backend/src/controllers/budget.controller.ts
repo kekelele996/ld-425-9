@@ -14,6 +14,6 @@ export class BudgetController {
 
   @Patch(':id/actual-cost')
   async updateActualCost(@Param('id') id: string, @Body() body: { actualCost: number }, @Req() req: Request) {
-    return ok(await this.service.adjustActualCost(id, body.actualCost, req.user?.id ?? 'demo-manager'));
+    return ok(await this.service.adjustActualCost(id, body.actualCost, req.user?.id ?? 'demo-manager', req.user?.name ?? '演示项目经理'));
   }
 }

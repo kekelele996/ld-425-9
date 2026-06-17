@@ -14,11 +14,11 @@ export class DesignController {
 
   @Post(':id/submit')
   async submit(@Param('id') id: string, @Req() req: Request) {
-    return ok(await this.service.submit(id, req.user?.id ?? 'demo-designer'));
+    return ok(await this.service.submit(id, req.user?.id ?? 'demo-designer', req.user?.name ?? '演示设计师'));
   }
 
   @Post(':id/review')
   async review(@Param('id') id: string, @Body() body: { approved: boolean; comment: string }, @Req() req: Request) {
-    return ok(await this.service.review(id, body.approved, body.comment, req.user?.id ?? 'demo-owner'));
+    return ok(await this.service.review(id, body.approved, body.comment, req.user?.id ?? 'demo-owner', req.user?.name ?? '演示业主'));
   }
 }

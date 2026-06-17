@@ -7,33 +7,33 @@ export class DesignPhase {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   projectId: string;
 
   @ManyToOne(() => RenovationProject, (project) => project.designPhases, { onDelete: 'CASCADE' })
   project: RenovationProject;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   designerId: string;
 
-  @Column({ type: 'enum', enum: PhaseStatus })
+  @Column({ type: 'varchar', length: 100 })
   status: PhaseStatus;
 
-  @Column()
+  @Column({ type: 'int' })
   version: number;
 
-  @Column('text')
+  @Column({ type: 'text' })
   description: string;
 
-  @Column('simple-json')
+  @Column({ type: 'simple-json' })
   fileUrls: string[];
 
-  @Column('text', { nullable: true })
+  @Column({ type: 'text', nullable: true })
   reviewComment?: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', length: 255, nullable: true })
   reviewerId?: string;
 }

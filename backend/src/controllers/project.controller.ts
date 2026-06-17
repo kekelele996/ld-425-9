@@ -15,6 +15,6 @@ export class ProjectController {
 
   @Post()
   async create(@Body() body: Partial<RenovationProject>, @Req() req: Request) {
-    return ok(await this.service.create(body), `项目已由 ${req.user?.name ?? 'system'} 创建`);
+    return ok(await this.service.create(body, req.user?.id ?? 'system', req.user?.name ?? '系统'), `项目已由 ${req.user?.name ?? 'system'} 创建`);
   }
 }

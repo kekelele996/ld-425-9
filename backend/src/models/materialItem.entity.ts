@@ -7,28 +7,28 @@ export class MaterialItem {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   projectId: string;
 
   @ManyToOne(() => RenovationProject, (project) => project.materials, { onDelete: 'CASCADE' })
   project: RenovationProject;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   category: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   spec: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   brand: string;
 
   @Column('decimal', { precision: 10, scale: 2 })
   quantity: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 50 })
   unit: string;
 
   @Column('decimal', { precision: 10, scale: 2 })
@@ -37,12 +37,12 @@ export class MaterialItem {
   @Column('decimal', { precision: 12, scale: 2 })
   totalPrice: number;
 
-  @Column({ type: 'enum', enum: PurchaseStatus })
+  @Column({ type: 'varchar', length: 100 })
   purchaseStatus: PurchaseStatus;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   supplier: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   room: string;
 }

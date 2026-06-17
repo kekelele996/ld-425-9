@@ -3,5 +3,7 @@ export const apiPaths = {
   designs: '/designs',
   materials: '/materials',
   budgets: '/budgets',
-  construction: '/construction'
+  construction: '/construction',
+  auditLogs: '/audit-logs',
+  auditLogsByProject: (projectId: string) => `/audit-logs/project/${projectId}`
 };

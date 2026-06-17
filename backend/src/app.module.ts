@@ -6,6 +6,7 @@ import { DesignController } from './controllers/design.controller';
 import { MaterialController } from './controllers/material.controller';
 import { BudgetController } from './controllers/budget.controller';
 import { ConstructionController } from './controllers/construction.controller';
+import { AuditLogController } from './controllers/auditLog.controller';
 import { HealthController } from './controllers/health.controller';
 import { RenovationProject } from './models/project.entity';
 import { DesignPhase } from './models/designPhase.entity';
@@ -28,7 +29,7 @@ import { auditLogMiddleware } from './middlewares/auditLog.middleware';
     TypeOrmModule.forRoot(databaseConfig),
     TypeOrmModule.forFeature([RenovationProject, DesignPhase, MaterialItem, BudgetItem, ConstructionNode, AuditLog])
   ],
-  controllers: [HealthController, ProjectController, DesignController, MaterialController, BudgetController, ConstructionController],
+  controllers: [HealthController, ProjectController, DesignController, MaterialController, BudgetController, ConstructionController, AuditLogController],
   providers: [ProjectService, DesignService, MaterialService, BudgetService, ConstructionService, AuditLogService, SeedService]
 })
 export class AppModule implements OnModuleInit, NestModule {
@@ -39,6 +40,10 @@ export class AppModule implements OnModuleInit, NestModule {
   }
 
   async onModuleInit() {
-    await this.seedService.ensureSeedData();
+    try {
+      await this.seedService.ensureSeedData();
+    } catch (err) {
+      console.warn('Seed skipped:', err instanceof Error ? err.message : err);
+    }
   }
 }

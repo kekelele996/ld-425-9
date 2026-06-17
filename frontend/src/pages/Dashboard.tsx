@@ -1,6 +1,7 @@
 import { Card, List, Typography } from 'antd';
 import ReactECharts from 'echarts-for-react';
 import { useEffect } from 'react';
+import { ActivityTimeline } from '../components/common/ActivityTimeline';
 import { AlertBanner } from '../components/common/AlertBanner';
 import { ProgressBar } from '../components/common/ProgressBar';
 import { StatusBadge } from '../components/common/StatusBadge';
@@ -45,6 +46,7 @@ export function Dashboard() {
           </Card>
         </div>
       )}
+      {project && <ActivityTimeline projectId={project.id} />}
     </div>
   );
 }

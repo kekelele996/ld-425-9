@@ -19,6 +19,6 @@ export class ConstructionController {
     @Body() body: { acceptanceStatus: AcceptanceStatus; acceptanceNote: string; photos: string[] },
     @Req() req: Request
   ) {
-    return ok(await this.service.inspect(id, body.acceptanceStatus, body.acceptanceNote, body.photos, req.user?.id ?? 'demo-contractor'));
+    return ok(await this.service.inspect(id, body.acceptanceStatus, body.acceptanceNote, body.photos, req.user?.id ?? 'demo-contractor', req.user?.name ?? '演示施工方'));
   }
 }

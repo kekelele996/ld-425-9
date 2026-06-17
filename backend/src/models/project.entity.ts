@@ -10,31 +10,31 @@ export class RenovationProject {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column({ type: 'enum', enum: HouseType })
+  @Column({ type: 'varchar', length: 100 })
   houseType: HouseType;
 
   @Column('decimal', { precision: 8, scale: 2 })
   area: number;
 
-  @Column({ type: 'enum', enum: DecorStyle })
+  @Column({ type: 'varchar', length: 100 })
   decorStyle: DecorStyle;
 
-  @Column()
+  @Column({ type: 'varchar', length: 500 })
   address: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   ownerId: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   designerId: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   contractorId: string;
 
-  @Column({ type: 'enum', enum: ProjectStatus })
+  @Column({ type: 'varchar', length: 100 })
   status: ProjectStatus;
 
   @Column('decimal', { precision: 12, scale: 2 })

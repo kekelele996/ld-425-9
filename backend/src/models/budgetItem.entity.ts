@@ -7,13 +7,13 @@ export class BudgetItem {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   projectId: string;
 
   @ManyToOne(() => RenovationProject, (project) => project.budgets, { onDelete: 'CASCADE' })
   project: RenovationProject;
 
-  @Column({ type: 'enum', enum: BudgetCategory })
+  @Column({ type: 'varchar', length: 100 })
   category: BudgetCategory;
 
   @Column('decimal', { precision: 12, scale: 2 })
@@ -25,6 +25,6 @@ export class BudgetItem {
   @Column('decimal', { precision: 12, scale: 2 })
   variance: number;
 
-  @Column('text')
+  @Column({ type: 'text' })
   note: string;
 }

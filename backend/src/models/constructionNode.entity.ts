@@ -7,13 +7,13 @@ export class ConstructionNode {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   projectId: string;
 
   @ManyToOne(() => RenovationProject, (project) => project.constructionNodes, { onDelete: 'CASCADE' })
   project: RenovationProject;
 
-  @Column({ type: 'enum', enum: ConstructionPhase })
+  @Column({ type: 'varchar', length: 100 })
   name: ConstructionPhase;
 
   @Column({ type: 'date' })
@@ -28,15 +28,15 @@ export class ConstructionNode {
   @Column({ type: 'date', nullable: true })
   actualEndDate?: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 100 })
   status: string;
 
-  @Column({ type: 'enum', enum: AcceptanceStatus })
+  @Column({ type: 'varchar', length: 100 })
   acceptanceStatus: AcceptanceStatus;
 
-  @Column('simple-json')
+  @Column({ type: 'simple-json' })
   acceptancePhotoUrls: string[];
 
-  @Column('text')
+  @Column({ type: 'text' })
   acceptanceNote: string;
 }
